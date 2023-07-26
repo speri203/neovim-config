@@ -11,6 +11,10 @@ return {
         sign_priority = 40,
         virtual_text = true,
       },
+      -- vim.api.nvim_set_hl(0, "HoverNormal", { fg = "#e7d7ad", bg = "#242424" }),
+      -- vim.api.nvim_set_hl(0, "HoverBorder", { fg = "#e7d7ad", bg = "#242424" }),
+      vim.api.nvim_set_hl(0, "HoverNormal", { fg = "#e7d7ad", guibg = NONE }),
+      vim.api.nvim_set_hl(0, "HoverBorder", { fg = "#e7d7ad", guibg = NONE }),
     }
   end,
   dependencies = {

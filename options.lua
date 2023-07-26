@@ -1,6 +1,6 @@
 return {
-    opt = {
-        wrap = true,
-        autochdir = true,
-    },
+  opt = {
+    wrap = true,
+    autochdir = true,
+  },
 }

@@ -45,7 +45,8 @@ end
 M.gruvbox_baby = function()
   -- bg is the color of the cmp menu background and fg is the color of the
   -- buffer text to the right
-  vim.api.nvim_set_hl(0, "Pmenu", { fg = "#8ec07c", bg = "#242424" })
+  -- vim.api.nvim_set_hl(0, "Pmenu", { fg = "#8ec07c", bg = "#242424" })
+  vim.api.nvim_set_hl(0, "Pmenu", { fg = "#8ec07c", guibg = NONE })
   -- fg is the color of the highlighted item in menu and the bg is the color of the
   -- item highlighted
   vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#191D24", bg = "#83a598", bold = true, italic = true })
