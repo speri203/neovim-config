@@ -1,5 +1,7 @@
 return {
   "abecodes/tabout.nvim",
+  lazy = true,
+  enabled = false,
   config = function()
     require("tabout").setup {
       tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable

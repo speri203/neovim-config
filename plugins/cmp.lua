@@ -42,7 +42,7 @@ return {
     local luasnip = require "luasnip"
     local cmp_theme_config = require "user.plugins.cmp_theme.config"
 
-    cmp_theme_config.nightfox()
+    cmp_theme_config.gruvbox_baby()
 
     return require("astronvim.utils").extend_tbl(opts, {
       view = {
@@ -75,7 +75,6 @@ return {
             nvim_lua = "[API]",
             cmp_tabnine = "[Tabnine]",
             path = "[Path]",
-            emoji = "[Emoji]",
           })[entry.source.name]
           return vim_item
         end,

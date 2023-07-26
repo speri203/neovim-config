@@ -2,7 +2,7 @@ require "user.utils"
 
 return {
   -- colorscheme = "astrotheme",
-  colorscheme = "nightfox",
+  colorscheme = "gruvbox-baby",
 
   polish = function()
     local set = vim.opt
