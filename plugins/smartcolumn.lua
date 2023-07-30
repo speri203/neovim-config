@@ -1,6 +1,13 @@
 return {
   "m4xshen/smartcolumn.nvim",
-  lazy = true,
+  enabled = false,
   event = { "InsertEnter", "User AstroFile" },
-  opts = {},
+  config = function()
+    require("smartcolumn").setup {
+      colorcolumn = "80",
+      disabled_filetypes = { "help", "text", "markdown" },
+      custom_colorcolumn = {},
+      scope = "file",
+    }
+  end,
 }
