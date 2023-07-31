@@ -1,4 +1,5 @@
 require "user.utils"
+vim.g.python3_host_prog = "/Users/peri/.config/nvim/lua/user/neovim/bin/python3"
 
 return {
   -- colorscheme = "astrotheme",
@@ -9,7 +10,6 @@ return {
 
     set.autochdir = true
   end,
-
   -- add new user interface icon
   icons = {
     VimIcon = "",

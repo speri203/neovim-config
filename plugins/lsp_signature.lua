@@ -1,6 +1,7 @@
 return {
   "ray-x/lsp_signature.nvim",
   lazy = false,
+  event = { "LspAttach" },
   config = function()
     local cfg = {
       -- debug = false, -- set to true to enable debug logging
