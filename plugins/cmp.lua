@@ -42,7 +42,8 @@ return {
     local luasnip = require "luasnip"
     local cmp_theme_config = require "user.plugins.cmp_theme.config"
 
-    cmp_theme_config.gruvbox_baby()
+    -- cmp_theme_config.gruvbox_baby()
+    cmp_theme_config.nordictheme()
 
     return require("astronvim.utils").extend_tbl(opts, {
       view = {

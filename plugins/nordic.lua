@@ -1,7 +1,6 @@
 return {
   "AlexvZyl/nordic.nvim",
   lazy = true,
-  enabled = false,
   -- priority = 1000,
   config = function()
     local palette = require "nordic.colors"
@@ -10,13 +9,14 @@ return {
       bold_keywords = true,
       bright_border = true,
       swap_backgrounds = true,
+      transparent_bg = false,
       cursorline = { theme = "light" },
       onedark = {
         brighter_whites = true,
       },
       override = {
         Visual = {
-          bg = palette.yellow.base,
+          bg = palette.blue0,
           fg = palette.black,
           bold = true, -- Or false.,
         },
