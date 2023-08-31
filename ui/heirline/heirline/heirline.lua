@@ -263,7 +263,13 @@ local Git = {
   },
   {
     provider = "",
-    hl = function() return { fg = "bright_bg", bold = true } end,
+    hl = function(self)
+      if self.status_dict.removed == 0 and self.status_dict.added == 0 and self.status_dict.changed == 0 then
+        return { fg = "red", bold = true }
+      else
+        return { fg = "bright_bg", bold = true }
+      end
+    end,
   },
 }
 
