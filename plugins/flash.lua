@@ -1,3 +1,5 @@
+-- Plugin for movement within a file utilizing partial search + jump
+-- s, S, f, F, t, T, yr
 return {
   "folke/flash.nvim",
   event = "VeryLazy",

@@ -1,4 +1,4 @@
-#!/Users/peri/.config/nvim/lua/user/neovim/bin/python3
+#!/Users/peri/.config/nvim/lua/user/neovim/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

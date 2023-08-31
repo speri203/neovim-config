@@ -1,3 +1,4 @@
+-- Dims unused functions and variables
 return {
   "zbirenbaum/neodim",
   event = "LspAttach",

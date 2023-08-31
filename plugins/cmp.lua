@@ -40,10 +40,11 @@ return {
   opts = function(_, opts)
     local cmp = require "cmp"
     local luasnip = require "luasnip"
-    local cmp_theme_config = require "user.plugins.cmp_theme.config"
+    local cmp_theme_config = require "user.ui.cmp.cmp_config"
 
     -- cmp_theme_config.gruvbox_baby()
-    cmp_theme_config.nordictheme()
+    -- cmp_theme_config.nordictheme()
+    cmp_theme_config.astrotheme()
 
     return require("astronvim.utils").extend_tbl(opts, {
       view = {

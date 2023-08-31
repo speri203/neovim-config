@@ -1,3 +1,4 @@
+
 -- The following functions are utilized for the ability to run current buffer
 -- in the terminal
 local function substitute(cmd)
