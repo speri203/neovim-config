@@ -4,12 +4,15 @@ return {
   -- Disabling heirline which is the default status bar plugin in AstroVim
   {
     "rebelot/heirline.nvim",
-    enabled = false,
+    lazy = true,
+    event = "User AstroFile",
+    opts = function() return require "user.ui.heirline.heirline.heirline" end,
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = { "BufWinEnter" },
-    config = function() require "user.ui.lualine.lualine_2" end,
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   event = { "BufWinEnter" },
+  --   enabled = false,
+  --   config = function() require "user.ui.lualine.lualine_2" end,
+  -- },
 }
