@@ -165,11 +165,23 @@ local ViMode = {
 local FileIcon = {
   {
     provider = "",
-    hl = function(self) return { fg = self.icon_color } end,
+    hl = function(self)
+      if self.icon == "󰈙" then
+        return { fg = "orange" }
+      else
+        return { fg = self.icon_color }
+      end
+    end,
   },
   {
     provider = function(self) return self.icon and (self.icon .. " ") end,
-    hl = function(self) return { bg = self.icon_color, fg = "Normal" } end,
+    hl = function(self)
+      if self.icon == "󰈙" then
+        return { bg = "orange", fg = "Normal" }
+      else
+        return { bg = self.icon_color, fg = "Normal" }
+      end
+    end,
   },
 }
 
