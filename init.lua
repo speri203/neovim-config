@@ -1,6 +1,7 @@
 require "user.utils"
 vim.g.python3_host_prog = "/Users/peri/.config/nvim/lua/user/neovim/bin/python3"
-
+vim.opt.numberwidth = 3
+vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
 return {
   -- colorscheme = "astrotheme",
   -- colorscheme = "gruvbox-baby",

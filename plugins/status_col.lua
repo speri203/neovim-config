@@ -4,5 +4,7 @@ return {
   "luukvbaal/statuscol.nvim",
   lazy = true,
   event = "LspAttach",
-  opts = {},
+  opts = {
+    clickmod = "c",
+  },
 }
