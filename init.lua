@@ -5,6 +5,7 @@ vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ?
 return {
   -- colorscheme = "astrotheme",
   -- colorscheme = "gruvbox-baby",
+  colorscheme = "everblush",
 
   polish = function()
     local set = vim.opt

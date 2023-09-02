@@ -6,6 +6,7 @@ local utils = require "heirline.utils"
 local Normal = string.format("#%06x", utils.get_highlight("Normal").fg)
 local Align = { provider = "%=" }
 local Space = { provider = " " }
+local status = require "astronvim.utils.status"
 
 local mode_colors = {
   n = "blue",
@@ -367,6 +368,24 @@ local Scrollbar = {
   },
 }
 
+local LSPActive = {
+  condition = conditions.lsp_attached,
+  update = { "LspAttach", "LspDetach" },
+
+  -- You can keep it simple,
+  -- provider = " [LSP]",
+
+  -- Or complicate things a bit and get the servers names
+  provider = function()
+    local names = {}
+    for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+      table.insert(names, server.name)
+    end
+    return " [" .. table.concat(names, " ") .. "]"
+  end,
+  hl = { fg = "green", bold = true },
+}
+
 local StatusLine = {
   ViMode,
   Space,
@@ -375,6 +394,9 @@ local StatusLine = {
   Git,
   Align,
   Diagnostics,
+  Space,
+  Space,
+  LSPActive,
   Space,
   Space,
   WorkDir,
@@ -583,6 +605,47 @@ end)
 return {
   opts = {
     colors = colors,
+    --   winbar = { -- create custom winbar
+    --     -- store the current buffer number
+    --     init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+    --     fallthrough = false, -- pick the correct winbar based on condition
+    --     -- inactive winbar
+    --     {
+    --       condition = function() return not status.condition.is_active() end,
+    --       -- show the path to the file relative to the working directory
+    --       status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
+    --       -- add the file name and icon
+    --       status.component.file_info {
+    --         file_icon = { hl = status.hl.file_icon "winbar", padding = { left = 0 } },
+    --         file_modified = false,
+    --         file_read_only = false,
+    --         hl = status.hl.get_attributes("winbarnc", true),
+    --         surround = false,
+    --         update = "BufEnter",
+    --       },
+    --     },
+    --     -- active winbar
+    --     {
+    --       -- show the path to the file relative to the working directory
+    --       status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
+    --       -- add the file name and icon
+    --       status.component.file_info { -- add file_info to breadcrumbs
+    --         file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
+    --         file_modified = false,
+    --         file_read_only = false,
+    --         hl = status.hl.get_attributes("winbar", true),
+    --         surround = false,
+    --         update = "BufEnter",
+    --       },
+    --       -- show the breadcrumbs
+    --       status.component.breadcrumbs {
+    --         icon = { hl = true },
+    --         hl = status.hl.get_attributes("winbar", true),
+    --         prefix = true,
+    --         padding = { left = 0 },
+    --       },
+    --     },
+    --   },
   },
   statusline = StatusLines,
   statuscolumn = Statuscolumns,

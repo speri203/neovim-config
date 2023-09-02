@@ -44,8 +44,7 @@ return {
 
     -- cmp_theme_config.gruvbox_baby()
     -- cmp_theme_config.nordictheme()
-    cmp_theme_config.astrotheme()
-
+    -- cmp_theme_config.astrotheme()
     return require("astronvim.utils").extend_tbl(opts, {
       view = {
         entries = { name = "custom", selection_order = "near_cursor" },
