@@ -246,29 +246,43 @@ local Git = {
   hl = { fg = "black" },
 
   { -- git branch name
-    provider = function(self) return " " .. self.status_dict.head .. " " end,
+    provider = function(self) return " " .. self.status_dict.head .. "" end,
     hl = { bold = true, bg = "red" },
   },
+  {
+    provider = "",
+    hl = function() return { fg = "red", bold = true } end,
+  },
+
   {
     provider = function(self)
       local count = self.status_dict.added or 0
       return count > 0 and (dots.UI.icons.Git.add .. " " .. count .. " ")
     end,
-    hl = { fg = "green", bg = "bright_bg" },
+    hl = {
+      fg = "green",
+      -- bg = "bright_bg"
+    },
   },
   {
     provider = function(self)
       local count = self.status_dict.removed or 0
       return count > 0 and (dots.UI.icons.Git.del .. " " .. count .. " ")
     end,
-    hl = { fg = "red", bg = "bright_bg" },
+    hl = {
+      fg = "red",
+      -- bg = "bright_bg"
+    },
   },
   {
     provider = function(self)
       local count = self.status_dict.changed or 0
       return count > 0 and (dots.UI.icons.Git.mod .. " " .. count .. " ")
     end,
-    hl = { fg = "orange", bg = "bright_bg" },
+    hl = {
+      fg = "orange",
+      -- bg = "bright_bg"
+    },
   },
   {
     provider = function(self) return self.icon and (self.icon .. " ") end,
@@ -278,11 +292,30 @@ local Git = {
     provider = "",
     hl = function(self)
       if self.status_dict.removed == 0 and self.status_dict.added == 0 and self.status_dict.changed == 0 then
-        return { fg = "red", bold = true }
+        return { fg = "background", bold = true }
       else
-        return { fg = "bright_bg", bold = true }
+        return { fg = "background", bold = true }
       end
     end,
+  },
+  on_click = {
+    callback = function()
+      -- If you want to use Fugitive:
+      -- vim.cmd("G")
+
+      -- If you prefer Lazygit
+      -- use vim.defer_fn() if the callback requires
+      -- opening of a floating window
+      -- (this also applies to telescope)
+      -- vim.defer_fn(function() vim.cmd "Lazygit" end, 100)
+      --
+
+      local astro_utils = require "astronvim.utils"
+      local worktree = require("astronvim.utils.git").file_worktree()
+      local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir) or ""
+      vim.defer_fn(function() astro_utils.toggle_term_cmd("lazygit " .. flags) end, 100)
+    end,
+    name = "heirline_git",
   },
 }
 
@@ -324,6 +357,14 @@ local Diagnostics = {
   {
     provider = function(self) return self.hints > 0 and (self.hint_icon .. self.hints) end,
     hl = { fg = "diag_hint" },
+  },
+  on_click = {
+    callback = function()
+      require("trouble").toggle { mode = "document_diagnostics" }
+      -- or
+      -- vim.diagnostic.setqflist()
+    end,
+    name = "heirline_diagnostics",
   },
 }
 
@@ -371,6 +412,12 @@ local Scrollbar = {
 local LSPActive = {
   condition = conditions.lsp_attached,
   update = { "LspAttach", "LspDetach" },
+  on_click = {
+    callback = function()
+      vim.defer_fn(function() vim.cmd "LspInfo" end, 100)
+    end,
+    name = "heirline_LSP",
+  },
 
   -- You can keep it simple,
   -- provider = " [LSP]",
@@ -381,9 +428,9 @@ local LSPActive = {
     for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
       table.insert(names, server.name)
     end
-    return " [" .. table.concat(names, " ") .. "]"
+    return " " .. table.concat(names, " ") .. ""
   end,
-  hl = { fg = "green", bold = true },
+  hl = { fg = "diag_info", bold = true },
 }
 
 local StatusLine = {

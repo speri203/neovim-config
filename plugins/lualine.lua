@@ -5,14 +5,17 @@ return {
   {
     "rebelot/heirline.nvim",
     lazy = true,
+    event = { "BufWinEnter" },
+    enabled = true,
     event = "User AstroFile",
     opts = function() return require "user.ui.heirline.heirline.heirline" end,
   },
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  --   event = { "BufWinEnter" },
-  --   enabled = false,
-  --   config = function() require "user.ui.lualine.lualine_2" end,
-  -- },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = true,
+    event = { "BufWinEnter" },
+    enabled = false,
+    config = function() require "user.ui.lualine.lualine_3" end,
+  },
 }
