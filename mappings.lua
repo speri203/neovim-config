@@ -1,20 +1,23 @@
 return {
   n = {
+    -- NOTE: Buffer Movement
     ["<C-r>"] = {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
-    ["<C-l>"] = {
+    ["<S-Tab>"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
+
+    -- NOTE: Telescope keymaps
     ["<leader>fp"] = { ":Telescope projects<cr>", desc = "Open Telescope projects" },
+
+    -- NOTE: Movement within file
     ["<S-d>"] = { "<C-d>zz", desc = "Jump down screen and center " },
     ["<S-u>"] = { "<C-u>zz", desc = "Jump up screen and center " },
     n = { "nzzzv", desc = "Jump to next search result and center screen" },
     N = { "Nzzzv", desc = "Jump to previous search result and center screen" },
-    ["<C-j>"] = false,
-    ["<C-k>"] = false,
     ["f"] = false,
     ["F"] = false,
     ["<leader>rn"] = {
@@ -52,4 +55,7 @@ return {
   vim.keymap.set("o", "im", "iW"),
   vim.keymap.set("o", "iq", 'i"'),
   vim.keymap.set("o", "iz", "i'"),
+
+  vim.keymap.set("n", "<C-d>", "<C-w>j"),
+  vim.keymap.set("n", "<C-u>", "<C-w>k"),
 }
