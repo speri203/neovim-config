@@ -1,6 +1,6 @@
 -- local U = require("core.utils.colors")
-require "user.ui.heirline.heirline.icons"
-local U = require "user.ui.heirline.heirline.colors"
+require "user.ui.heirline.icons"
+local U = require "user.ui.heirline.colors"
 local conditions = require "heirline.conditions"
 local utils = require "heirline.utils"
 local Normal = string.format("#%06x", utils.get_highlight("Normal").fg)

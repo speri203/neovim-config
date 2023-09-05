@@ -1,6 +1,6 @@
 local M = {}
 
-local hsluv = require "user.ui.heirline.heirline.hsluv"
+local hsluv = require "user.ui.heirline.hsluv"
 
 M.bg = "#000000"
 M.fg = "#ffffff"

@@ -8,7 +8,7 @@ return {
     event = { "BufWinEnter" },
     enabled = true,
     event = "User AstroFile",
-    opts = function() return require "user.ui.heirline.heirline.heirline" end,
+    opts = function() return require "user.ui.heirline.heirline" end,
   },
   {
     "nvim-lualine/lualine.nvim",
