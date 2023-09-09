@@ -25,7 +25,7 @@ local mode_colors = {
 }
 
 local colors = {
-  -- bright_bg = U.blend(string.format("#%06x", utils.get_highlight("Comment").fg, 0.3), Normal, 1.7),
+  bright_bg = U.blend(string.format("#%06x", utils.get_highlight("Comment").fg, 0.3), Normal, 1.7),
   bright_bg = U.lighten(string.format("#%06x", utils.get_highlight("Comment").fg), 2.5, Normal),
   brighter_bg = U.blend(string.format("#%06x", utils.get_highlight("Comment").fg, 0.3), Normal, 1.5),
   brightest_bg = U.blend(string.format("#%06x", utils.get_highlight("Comment").fg, 0.3), Normal, 1.3),
@@ -40,7 +40,7 @@ local colors = {
   diag_warn = utils.get_highlight("DiagnosticWarn").fg,
   diag_error = utils.get_highlight("DiagnosticError").fg,
   diag_hint = utils.get_highlight("DiagnosticHint").fg,
-  diag_info = utils.get_highlight("DiagnosticInfo").fg,
+  diag_info = utils.get_highlight("DiagnosticHint").fg,
 }
 
 local ViMode = {
@@ -250,7 +250,7 @@ local Git = {
     hl = { bold = true, bg = "red" },
   },
   {
-    provider = "",
+    provider = " ",
     hl = function() return { fg = "red", bold = true } end,
   },
 
@@ -428,7 +428,7 @@ local LSPActive = {
     for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
       table.insert(names, server.name)
     end
-    return " " .. table.concat(names, " ") .. ""
+    return " " .. table.concat(names, " ") .. ""
   end,
   hl = { fg = "diag_info", bold = true },
 }
@@ -441,7 +441,6 @@ local StatusLine = {
   Git,
   Align,
   Diagnostics,
-  Space,
   Space,
   LSPActive,
   Space,

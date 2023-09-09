@@ -8,9 +8,9 @@ M.UI = {
       Info = " ",
     },
     Git = {
-      add = " ",
-      del = " ",
-      mod = " ",
+      add = "",
+      del = "",
+      mod = "",
       Signs = {
         add = { text = "▎" },
         change = { text = "▎" },
