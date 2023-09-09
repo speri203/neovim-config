@@ -2,11 +2,12 @@
 -- like folding portions of code (ex. if statements, functions, etc)
 return {
   "luukvbaal/statuscol.nvim",
+  dependencies = { "luukvbaal/statuscol.nvim" },
   lazy = true,
   event = "LspAttach",
-  config = function()
+  opts = function()
     local builtin = require "statuscol.builtin"
-    local cfg = {
+    return {
       setopt = true, -- Whether to set the 'statuscolumn' option, may be set to false for those who
       -- want to use the click handlers in their own 'statuscolumn': _G.Sc[SFL]a().
       -- Although I recommend just using the segments field below to build your
@@ -19,7 +20,7 @@ return {
       bt_ignore = nil, -- lua table with 'buftype' values for which 'statuscolumn' will be unset
       -- Default segments (fold -> sign -> line number + separator), explained below
       segments = {
-        { text = { "%C" }, click = "v:lua.ScFa" },
+        -- { text = { "%C" }, click = "v:lua.ScFa" },
         { text = { "%s" }, click = "v:lua.ScSa" },
         {
           text = { builtin.lnumfunc, " " },
@@ -50,6 +51,5 @@ return {
         gitsigns_extmark_signs_ = builtin.gitsigns_click,
       },
     }
-    return cfg
   end,
 }
